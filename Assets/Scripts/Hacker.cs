@@ -7,6 +7,7 @@ public class Hacker : MonoBehaviour
 {
 
   // GAME CONFIG ---------------------
+  const string menuHint = "You can return to the menu by typing \"menu\"";
   string[] passSchool = { "Chair", "Book", "Teacher", "Table", "Lesson", "Playground", "Headteacher", "Lunchbox", "Assistant", "Uniform" };
   string[] passGovernment = { "President", "Meeting", "Country", "Leadership", "Federal", "Authority", "Office", "Legislature" };
   string[] passGaming = { "Sony", "Nintendo", "Controller", "Microsoft", "Zelda", "Pokemon", "Mario", "Sonic", "Online", "Player", "Cooperative", "Family" };
@@ -97,9 +98,10 @@ public class Hacker : MonoBehaviour
         DisplayMainMenu();
       }
     }
-    else if (input.ToLower() == "quit")
+    else if (input.ToLower() == "quit" || input.ToLower() == "close" || input.ToLower() == "exit")
     {
       Application.Quit();
+      Terminal.WriteLine("If you are using a browser, close the tab/window");
     }
     else if (currentScreen == Screen.Restart)
     {
@@ -143,6 +145,7 @@ public class Hacker : MonoBehaviour
     Terminal.ClearScreen();
     RequestPassword();
     Terminal.WriteLine("Please enter the password: ");
+    Terminal.WriteLine(menuHint);
   }
 
   void RequestPassword()
@@ -194,8 +197,6 @@ public class Hacker : MonoBehaviour
 
   void ShowLevelReward()
   {
-    const string menuHint = "\n\nTo play again, type \"menu\"";
-
     switch (level)
     {
       case 1:
